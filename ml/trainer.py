@@ -19,23 +19,23 @@ class Trainer:
             metrics=["accuracy"]
     )
 
-def train(self, X_train, y_train, epochs=50):
-    early_stopping = keras.callbacks.EarlyStopping(
-        monitor="val_loss", patience=5, restore_best_weights=True
-    )
-    return self.model.fit(
-        X_train, y_train,
-        epochs=epochs,
-        validation_split=0.2,
-        callbacks=[early_stopping]
-    )
+    def train(self, X_train, y_train, epochs=50):
+        early_stopping = keras.callbacks.EarlyStopping(
+            monitor="val_loss", patience=5, restore_best_weights=True
+        )
+        return self.model.fit(
+            X_train, y_train,
+            epochs=epochs,
+            validation_split=0.2,
+            callbacks=[early_stopping]
+        )
 
-def evaluate(self, X_test, y_test):
-    loss, accuracy = self.model.evaluate(X_test, y_test)
-    return {"loss": loss, "accuracy": accuracy}
+    def evaluate(self, X_test, y_test):
+        loss, accuracy = self.model.evaluate(X_test, y_test)
+        return {"loss": loss, "accuracy": accuracy}
 
-def save(self, path):
-    self.model.save(path)
+    def save(self, path):
+        self.model.save(path)
 
-def __repr__(self):
-    return f"Trainer(hidden_layers={self.hidden_layers}, dropout={self.dropout})"
+    def __repr__(self):
+        return f"Trainer(hidden_layers={self.hidden_layers}, dropout={self.dropout})"
