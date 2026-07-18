@@ -10,11 +10,11 @@ y = build_labels(data)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 model_configs = [
-    {"hidden_layers": (32,), "dropout": 0.0},
     {"hidden_layers": (64, 32), "dropout": 0.0},
     {"hidden_layers": (64, 32), "dropout": 0.2},
     {"hidden_layers": (128, 64, 32), "dropout": 0.0},
     {"hidden_layers": (128, 64, 32), "dropout": 0.3},
+    {"hidden_layers": (256, 128, 64, 32), "dropout": 0.2}
 ]
 
 candidates = []
