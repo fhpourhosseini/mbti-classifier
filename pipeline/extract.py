@@ -12,14 +12,15 @@ from pipeline.errors import (
 logger = logging.getLogger(__name__)
 
 def extract(filepath):
-    with open(filepath, encoding="utf-8") as f:
+    with open(filepath, encoding="cp1252") as f:
         reader = csv.reader(f)
         next(reader)
         for row in reader:
             row_id = row[0]
             try:
                 answers = parse_answers(row[1:61])
-                peronality_type = parse_personality_type(row[61])
+                personality_type = parse_personality_type(row[61])
+                yield TestAnswers(answers, personality_type)
             except (
                 InvalidNumberOfAnswersError,
                 InvalidAnswerTypeError, 
@@ -28,4 +29,4 @@ def extract(filepath):
             ) as e:
                 logger.warning(f"Zeile ID={row_id} übersprungen: {e}")
 
-                
+
