@@ -34,4 +34,4 @@ python train.py
 
 ## Ergebnis
 
-Bestes Modell: ~98% Accuracy (Hidden Layers 128-64-32, Dropout 0.3)
+Bestes Modell: ~98.3 % Accuracy (Hidden Layers 265-128-64-32, Dropout 0.2)
